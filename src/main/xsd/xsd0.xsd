@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://services.digikey.com/dkservices"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://services.digikey.com/dkservices">
+    <xs:import schemaLocation="xsd2.xsd"
+               namespace="http://schemas.datacontract.org/2004/07/DkServicesLib.Output"/>
+    <xs:import schemaLocation="xsd3.xsd"
+               namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+    <xs:element name="CreateBillOfMaterials">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="createBomInput" nillable="true" type="tns:CreateBomInput"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="CreateBomInput">
+        <xs:sequence>
+            <xs:element name="Name" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="PartsList" nillable="true" type="tns:ArrayOfBillOfMaterialsPart"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="CreateBomInput" nillable="true" type="tns:CreateBomInput"/>
+    <xs:complexType name="ArrayOfBillOfMaterialsPart">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="BillOfMaterialsPart" nillable="true"
+                        type="tns:BillOfMaterialsPart"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfBillOfMaterialsPart" nillable="true" type="tns:ArrayOfBillOfMaterialsPart"/>
+    <xs:complexType name="BillOfMaterialsPart">
+        <xs:sequence>
+            <xs:element name="PartNumber" nillable="true" type="xs:string"/>
+            <xs:element name="Quantity" type="xs:int"/>
+            <xs:element minOccurs="0" name="ReferenceDesignator" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="BillOfMaterialsPart" nillable="true" type="tns:BillOfMaterialsPart"/>
+    <xs:complexType name="Security">
+        <xs:sequence>
+            <xs:element name="AuthenticationToken" nillable="true" type="xs:string"/>
+            <xs:element name="PartnerID" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Security" nillable="true" type="tns:Security"/>
+    <xs:complexType name="Locale">
+        <xs:sequence>
+            <xs:element name="Country" nillable="true" type="xs:string"/>
+            <xs:element name="Language" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Locale" nillable="true" type="tns:Locale"/>
+    <xs:element name="CreateBillOfMaterialsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="CreateBillOfMaterialsResult" nillable="true" type="q1:BomResult"
+                            xmlns:q1="http://schemas.datacontract.org/2004/07/DkServicesLib.Output"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetBillOfMaterials">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="getBomInput" nillable="true" type="tns:GetBomInput"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="GetBomInput">
+        <xs:sequence>
+            <xs:element name="BomId" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetBomInput" nillable="true" type="tns:GetBomInput"/>
+    <xs:element name="GetBillOfMaterialsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetBillOfMaterialsResult" nillable="true"
+                            type="tns:BillOfMaterialsOut"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="BillOfMaterialsOut">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="DateCreated" type="xs:dateTime"/>
+            <xs:element minOccurs="0" name="ID" type="xs:int"/>
+            <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="PartsList" nillable="true" type="tns:ArrayOfBillOfMaterialsPart"/>
+            <xs:element minOccurs="0" name="RevisionNumber" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="BillOfMaterialsOut" nillable="true" type="tns:BillOfMaterialsOut"/>
+    <xs:element name="AddDetailsToBom">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="insertBomDetailInput" nillable="true" type="tns:InsertBomDetailInput"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="InsertBomDetailInput">
+        <xs:sequence>
+            <xs:element name="BomId" type="xs:int"/>
+            <xs:element name="BomVersion" type="xs:int"/>
+            <xs:element name="PartsList" nillable="true" type="tns:ArrayOfBillOfMaterialsPart"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="InsertBomDetailInput" nillable="true" type="tns:InsertBomDetailInput"/>
+    <xs:element name="AddDetailsToBomResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="AddDetailsToBomResult" nillable="true" type="q2:BomResult"
+                            xmlns:q2="http://schemas.datacontract.org/2004/07/DkServicesLib.Output"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DeleteBomDetails">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="deleteBomDetailInput" nillable="true" type="tns:DeleteBomDetailInput"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="DeleteBomDetailInput">
+        <xs:sequence>
+            <xs:element name="BomId" type="xs:int"/>
+            <xs:element name="BomVersion" type="xs:int"/>
+            <xs:element name="DetailIDs" nillable="true" type="q3:ArrayOfint"
+                        xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="DeleteBomDetailInput" nillable="true" type="tns:DeleteBomDetailInput"/>
+    <xs:element name="DeleteBomDetailsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="DeleteBomDetailsResult" nillable="true" type="q4:ArrayOfBomPartError"
+                            xmlns:q4="http://schemas.datacontract.org/2004/07/DkServicesLib.Output"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Authenticate">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="authenticateInput" nillable="true" type="tns:AuthenticateInput"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="AuthenticateInput">
+        <xs:sequence>
+            <xs:element name="UserName" nillable="true" type="xs:string"/>
+            <xs:element name="Password" nillable="true" type="xs:string"/>
+            <xs:element name="PartnerId" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="AuthenticateInput" nillable="true" type="tns:AuthenticateInput"/>
+    <xs:element name="AuthenticateResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="AuthenticateResult" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Notify">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="notifyInput" nillable="true" type="tns:NotifyInput"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="NotifyInput">
+        <xs:sequence>
+            <xs:element name="Message" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="PartNumber" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="NotifyInput" nillable="true" type="tns:NotifyInput"/>
+    <xs:element name="NotifyResponse">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Search">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="searchInput" nillable="true" type="tns:SearchInput"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="SearchInput">
+        <xs:sequence>
+            <xs:element name="Keywords" nillable="true" type="xs:string"/>
+            <xs:element name="RecordCount" type="xs:int"/>
+            <xs:element name="RecordStartPosition" type="xs:int"/>
+            <xs:element minOccurs="0" name="SearchOptions" nillable="true" type="tns:ArrayOfSearchOption"/>
+            <xs:element minOccurs="0" name="Filters" nillable="true" type="tns:Filter"/>
+            <xs:element minOccurs="0" name="Sort" nillable="true" type="tns:SortParameters"/>
+            <xs:element minOccurs="0" name="RequestedQuantity" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="SearchInput" nillable="true" type="tns:SearchInput"/>
+    <xs:complexType name="ArrayOfSearchOption">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="SearchOption" type="tns:SearchOption"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfSearchOption" nillable="true" type="tns:ArrayOfSearchOption"/>
+    <xs:simpleType name="SearchOption">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="InStock"/>
+            <xs:enumeration value="LeadFree"/>
+            <xs:enumeration value="RoHSCompliant"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="SearchOption" nillable="true" type="tns:SearchOption"/>
+    <xs:complexType name="Filter">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="CategoryIds" nillable="true" type="q5:ArrayOfint"
+                        xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            <xs:element minOccurs="0" name="FamilyIds" nillable="true" type="q6:ArrayOfint"
+                        xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            <xs:element minOccurs="0" name="ManufacturerIds" nillable="true" type="q7:ArrayOfint"
+                        xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            <xs:element minOccurs="0" name="ParametricFilters" nillable="true" type="tns:ArrayOfParametricFilter"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Filter" nillable="true" type="tns:Filter"/>
+    <xs:complexType name="ArrayOfParametricFilter">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ParametricFilter" nillable="true"
+                        type="tns:ParametricFilter"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfParametricFilter" nillable="true" type="tns:ArrayOfParametricFilter"/>
+    <xs:complexType name="ParametricFilter">
+        <xs:sequence>
+            <xs:element name="ParameterId" type="xs:int"/>
+            <xs:element name="ValueId" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ParametricFilter" nillable="true" type="tns:ParametricFilter"/>
+    <xs:complexType name="SortParameters">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Direction" type="tns:SortDirection"/>
+            <xs:element minOccurs="0" name="Option" type="tns:SortOption"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="SortParameters" nillable="true" type="tns:SortParameters"/>
+    <xs:simpleType name="SortDirection">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Ascending"/>
+            <xs:enumeration value="Descending"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="SortDirection" nillable="true" type="tns:SortDirection"/>
+    <xs:simpleType name="SortOption">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SortByDigiKeyPartNumber"/>
+            <xs:enumeration value="SortByManufacturerPartNumber"/>
+            <xs:enumeration value="SortByDescription"/>
+            <xs:enumeration value="SortByCategory"/>
+            <xs:enumeration value="SortByFamily"/>
+            <xs:enumeration value="SortByManufacturer"/>
+            <xs:enumeration value="SortByMinimumOrderQuantity"/>
+            <xs:enumeration value="SortByQuantityAvailable"/>
+            <xs:enumeration value="SortByUnitPrice"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="SortOption" nillable="true" type="tns:SortOption"/>
+    <xs:element name="SearchResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="SearchResult" nillable="true" type="tns:SearchOut"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="SearchOut">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="ResultCount" type="xs:int"/>
+            <xs:element minOccurs="0" name="LimitedCategories" nillable="true" type="tns:ArrayOfCategory"/>
+            <xs:element minOccurs="0" name="FilterValues" nillable="true" type="tns:ArrayOfParameter"/>
+            <xs:element minOccurs="0" name="LimitedFilterValues" nillable="true" type="tns:ArrayOfParameter"/>
+            <xs:element minOccurs="0" name="PartRecords" nillable="true" type="tns:ArrayOfSearchPartRecord"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="SearchOut" nillable="true" type="tns:SearchOut"/>
+    <xs:complexType name="ArrayOfCategory">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="Category" nillable="true" type="tns:Category"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfCategory" nillable="true" type="tns:ArrayOfCategory"/>
+    <xs:complexType name="Category">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Id" type="xs:int"/>
+            <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Families" nillable="true" type="tns:ArrayOfFamily"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Category" nillable="true" type="tns:Category"/>
+    <xs:complexType name="ArrayOfFamily">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="Family" nillable="true" type="tns:Family"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfFamily" nillable="true" type="tns:ArrayOfFamily"/>
+    <xs:complexType name="Family">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Id" type="xs:int"/>
+            <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="PartCount" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Family" nillable="true" type="tns:Family"/>
+    <xs:complexType name="ArrayOfParameter">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="Parameter" nillable="true" type="tns:Parameter"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfParameter" nillable="true" type="tns:ArrayOfParameter"/>
+    <xs:complexType name="Parameter">
+        <xs:complexContent mixed="false">
+            <xs:extension base="tns:IdTextPair">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="Value" nillable="true" type="tns:IdTextPair"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="Parameter" nillable="true" type="tns:Parameter"/>
+    <xs:complexType name="IdTextPair">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Id" type="xs:int"/>
+            <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="IdTextPair" nillable="true" type="tns:IdTextPair"/>
+    <xs:complexType name="ArrayOfSearchPartRecord">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="SearchPartRecord" nillable="true"
+                        type="tns:SearchPartRecord"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfSearchPartRecord" nillable="true" type="tns:ArrayOfSearchPartRecord"/>
+    <xs:complexType name="SearchPartRecord">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Category" nillable="true" type="tns:IdTextPair"/>
+            <xs:element minOccurs="0" name="DigiKeyPartNumber" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Family" nillable="true" type="tns:IdTextPair"/>
+            <xs:element minOccurs="0" name="KitContents" nillable="true" type="tns:ArrayOfKitPart"/>
+            <xs:element minOccurs="0" name="Kits" nillable="true" type="tns:ArrayOfAssociatedPart"/>
+            <xs:element minOccurs="0" name="ManufacturerName" nillable="true" type="tns:IdTextPair"/>
+            <xs:element minOccurs="0" name="ManufacturerPageUrl" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="ManufacturerPartNumber" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="MatingProducts" nillable="true" type="tns:ArrayOfAssociatedPart"/>
+            <xs:element minOccurs="0" name="MediaLinks" nillable="true" type="tns:ArrayOfMedia"/>
+            <xs:element minOccurs="0" name="MinimumOrderQuantity" type="xs:int"/>
+            <xs:element minOccurs="0" name="OtherNames" nillable="true" type="q8:ArrayOfstring"
+                        xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            <xs:element minOccurs="0" name="Packaging" nillable="true" type="tns:IdTextPair"/>
+            <xs:element minOccurs="0" name="ParametricData" nillable="true" type="tns:ArrayOfParameter"/>
+            <xs:element minOccurs="0" name="PartDetailUrl" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Pricing" nillable="true" type="tns:ArrayOfPriceBreak"/>
+            <xs:element minOccurs="0" name="PrimaryDatasheet" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="PrimaryPhoto" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="PrimaryVideo" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="ProductDescription" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="QuantityOnHand" type="xs:int"/>
+            <xs:element minOccurs="0" name="RohsSubs" nillable="true" type="tns:ArrayOfAssociatedPart"/>
+            <xs:element minOccurs="0" name="SuggestedSubs" nillable="true" type="tns:ArrayOfAssociatedPart"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="SearchPartRecord" nillable="true" type="tns:SearchPartRecord"/>
+    <xs:complexType name="ArrayOfKitPart">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="KitPart" nillable="true" type="tns:KitPart"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfKitPart" nillable="true" type="tns:ArrayOfKitPart"/>
+    <xs:complexType name="KitPart">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Part" nillable="true" type="tns:AssociatedPart"/>
+            <xs:element minOccurs="0" name="Quantity" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="KitPart" nillable="true" type="tns:KitPart"/>
+    <xs:complexType name="AssociatedPart">
+        <xs:complexContent mixed="false">
+            <xs:extension base="tns:PartRecord">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="AssociatedPart" nillable="true" type="tns:AssociatedPart"/>
+    <xs:complexType name="PartRecord">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="DigiKeyPartNumber" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="ManufacturerPartNumber" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="MinimumOrderQuantity" type="xs:int"/>
+            <xs:element minOccurs="0" name="Packaging" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="PartId" type="xs:int"/>
+            <xs:element minOccurs="0" name="QuantityAvailable" type="xs:int"/>
+            <xs:element minOccurs="0" name="UnitPrice" type="xs:decimal"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="PartRecord" nillable="true" type="tns:PartRecord"/>
+    <xs:complexType name="ArrayOfAssociatedPart">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="AssociatedPart" nillable="true"
+                        type="tns:AssociatedPart"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfAssociatedPart" nillable="true" type="tns:ArrayOfAssociatedPart"/>
+    <xs:complexType name="ArrayOfMedia">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="Media" nillable="true" type="tns:Media"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfMedia" nillable="true" type="tns:ArrayOfMedia"/>
+    <xs:complexType name="Media">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="MediaType" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="SmallPhoto" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Thumbnail" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Media" nillable="true" type="tns:Media"/>
+    <xs:complexType name="ArrayOfPriceBreak">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="PriceBreak" nillable="true" type="tns:PriceBreak"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfPriceBreak" nillable="true" type="tns:ArrayOfPriceBreak"/>
+    <xs:complexType name="PriceBreak">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="BreakQuantity" type="xs:int"/>
+            <xs:element minOccurs="0" name="TotalPrice" type="xs:decimal"/>
+            <xs:element minOccurs="0" name="UnitPrice" type="xs:decimal"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="PriceBreak" nillable="true" type="tns:PriceBreak"/>
+</xs:schema>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DkServicesLib.Output"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://schemas.datacontract.org/2004/07/DkServicesLib.Output">
+    <xs:import schemaLocation="xsd0.xsd"
+               namespace="http://services.digikey.com/dkservices"/>
+    <xs:complexType name="BomResult">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="BomId" type="xs:int"/>
+            <xs:element minOccurs="0" name="BomPartErrors" nillable="true" type="tns:ArrayOfBomPartError"/>
+            <xs:element minOccurs="0" name="BomParts" nillable="true" type="tns:ArrayOfBomPartResult"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="BomResult" nillable="true" type="tns:BomResult"/>
+    <xs:complexType name="ArrayOfBomPartError">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="BomPartError" nillable="true"
+                        type="tns:BomPartError"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfBomPartError" nillable="true" type="tns:ArrayOfBomPartError"/>
+    <xs:complexType name="BomPartError">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="DetailId" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="PartNumber" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="BomPartError" nillable="true" type="tns:BomPartError"/>
+    <xs:complexType name="ArrayOfBomPartResult">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="BomPartResult" nillable="true"
+                        type="tns:BomPartResult"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfBomPartResult" nillable="true" type="tns:ArrayOfBomPartResult"/>
+    <xs:complexType name="BomPartResult">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="CorrectedPart" nillable="true" type="q1:BillOfMaterialsPart"
+                        xmlns:q1="http://services.digikey.com/dkservices"/>
+            <xs:element minOccurs="0" name="RequestedPart" nillable="true" type="q2:BillOfMaterialsPart"
+                        xmlns:q2="http://services.digikey.com/dkservices"/>
+            <xs:element minOccurs="0" name="SuggestedParts" nillable="true" type="q3:ArrayOfBillOfMaterialsPart"
+                        xmlns:q3="http://services.digikey.com/dkservices"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="BomPartResult" nillable="true" type="tns:BomPartResult"/>
+</xs:schema>

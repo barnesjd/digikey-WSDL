@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="Service" targetNamespace="http://services.digikey.com/dkservices"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                  xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:tns="http://services.digikey.com/dkservices"
+                  xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+                  xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex"
+                  xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy"
+                  xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+                  xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:i0="http://tempuri.org/"
+                  xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                  xmlns:wsa10="http://www.w3.org/2005/08/addressing"
+                  xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
+    <wsdl:import namespace="http://tempuri.org/"
+                 location="wsdl0.wsdl"/>
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://services.digikey.com/dkservices/Imports">
+            <xsd:import schemaLocation="xsd0.xsd"
+                        namespace="http://services.digikey.com/dkservices"/>
+            <xsd:import schemaLocation="xsd1.xsd"
+                        namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+            <xsd:import schemaLocation="xsd2.xsd"
+                        namespace="http://schemas.datacontract.org/2004/07/DkServicesLib.Output"/>
+            <xsd:import schemaLocation="xsd3.xsd"
+                        namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="IService_CreateBillOfMaterials_InputMessage">
+        <wsdl:part name="parameters" element="tns:CreateBillOfMaterials"/>
+    </wsdl:message>
+    <wsdl:message name="IService_CreateBillOfMaterials_InputMessage_Headers">
+        <wsdl:part name="Security" element="tns:Security"/>
+        <wsdl:part name="Locale" element="tns:Locale"/>
+    </wsdl:message>
+    <wsdl:message name="IService_CreateBillOfMaterials_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CreateBillOfMaterialsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IService_CreateBillOfMaterials_OutputMessage_Headers">
+        <wsdl:part name="Security" element="tns:Security"/>
+        <wsdl:part name="Locale" element="tns:Locale"/>
+    </wsdl:message>
+    <wsdl:message name="IService_GetBillOfMaterials_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetBillOfMaterials"/>
+    </wsdl:message>
+    <wsdl:message name="IService_GetBillOfMaterials_InputMessage_Headers">
+        <wsdl:part name="Security" element="tns:Security"/>
+        <wsdl:part name="Locale" element="tns:Locale"/>
+    </wsdl:message>
+    <wsdl:message name="IService_GetBillOfMaterials_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetBillOfMaterialsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IService_GetBillOfMaterials_OutputMessage_Headers">
+        <wsdl:part name="Security" element="tns:Security"/>
+        <wsdl:part name="Locale" element="tns:Locale"/>
+    </wsdl:message>
+    <wsdl:message name="IService_AddDetailsToBom_InputMessage">
+        <wsdl:part name="parameters" element="tns:AddDetailsToBom"/>
+    </wsdl:message>
+    <wsdl:message name="IService_AddDetailsToBom_InputMessage_Headers">
+        <wsdl:part name="Security" element="tns:Security"/>
+        <wsdl:part name="Locale" element="tns:Locale"/>
+    </wsdl:message>
+    <wsdl:message name="IService_AddDetailsToBom_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AddDetailsToBomResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IService_AddDetailsToBom_OutputMessage_Headers">
+        <wsdl:part name="Security" element="tns:Security"/>
+        <wsdl:part name="Locale" element="tns:Locale"/>
+    </wsdl:message>
+    <wsdl:message name="IService_DeleteBomDetails_InputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteBomDetails"/>
+    </wsdl:message>
+    <wsdl:message name="IService_DeleteBomDetails_InputMessage_Headers">
+        <wsdl:part name="Security" element="tns:Security"/>
+        <wsdl:part name="Locale" element="tns:Locale"/>
+    </wsdl:message>
+    <wsdl:message name="IService_DeleteBomDetails_OutputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteBomDetailsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IService_DeleteBomDetails_OutputMessage_Headers">
+        <wsdl:part name="Security" element="tns:Security"/>
+        <wsdl:part name="Locale" element="tns:Locale"/>
+    </wsdl:message>
+    <wsdl:message name="IService_Authenticate_InputMessage">
+        <wsdl:part name="parameters" element="tns:Authenticate"/>
+    </wsdl:message>
+    <wsdl:message name="IService_Authenticate_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AuthenticateResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IService_Notify_InputMessage">
+        <wsdl:part name="parameters" element="tns:Notify"/>
+    </wsdl:message>
+    <wsdl:message name="IService_Notify_InputMessage_Headers">
+        <wsdl:part name="Security" element="tns:Security"/>
+    </wsdl:message>
+    <wsdl:message name="IService_Notify_OutputMessage">
+        <wsdl:part name="parameters" element="tns:NotifyResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IService_Notify_OutputMessage_Headers">
+        <wsdl:part name="Security" element="tns:Security"/>
+    </wsdl:message>
+    <wsdl:message name="IService_Search_InputMessage">
+        <wsdl:part name="parameters" element="tns:Search"/>
+    </wsdl:message>
+    <wsdl:message name="IService_Search_InputMessage_Headers">
+        <wsdl:part name="Security" element="tns:Security"/>
+        <wsdl:part name="Locale" element="tns:Locale"/>
+    </wsdl:message>
+    <wsdl:message name="IService_Search_OutputMessage">
+        <wsdl:part name="parameters" element="tns:SearchResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IService_Search_OutputMessage_Headers">
+        <wsdl:part name="Security" element="tns:Security"/>
+        <wsdl:part name="Locale" element="tns:Locale"/>
+    </wsdl:message>
+    <wsdl:portType name="IService">
+        <wsdl:operation name="CreateBillOfMaterials">
+            <wsdl:input wsaw:Action="http://services.digikey.com/dkservices/IService/CreateBillOfMaterials"
+                        message="tns:IService_CreateBillOfMaterials_InputMessage"/>
+            <wsdl:output wsaw:Action="http://services.digikey.com/dkservices/IService/CreateBillOfMaterialsResponse"
+                         message="tns:IService_CreateBillOfMaterials_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetBillOfMaterials">
+            <wsdl:input wsaw:Action="http://services.digikey.com/dkservices/IService/GetBillOfMaterials"
+                        message="tns:IService_GetBillOfMaterials_InputMessage"/>
+            <wsdl:output wsaw:Action="http://services.digikey.com/dkservices/IService/GetBillOfMaterialsResponse"
+                         message="tns:IService_GetBillOfMaterials_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AddDetailsToBom">
+            <wsdl:input wsaw:Action="http://services.digikey.com/dkservices/IService/AddDetailsToBom"
+                        message="tns:IService_AddDetailsToBom_InputMessage"/>
+            <wsdl:output wsaw:Action="http://services.digikey.com/dkservices/IService/AddDetailsToBomResponse"
+                         message="tns:IService_AddDetailsToBom_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteBomDetails">
+            <wsdl:input wsaw:Action="http://services.digikey.com/dkservices/IService/DeleteBomDetails"
+                        message="tns:IService_DeleteBomDetails_InputMessage"/>
+            <wsdl:output wsaw:Action="http://services.digikey.com/dkservices/IService/DeleteBomDetailsResponse"
+                         message="tns:IService_DeleteBomDetails_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="Authenticate">
+            <wsdl:input wsaw:Action="http://services.digikey.com/dkservices/IService/Authenticate"
+                        message="tns:IService_Authenticate_InputMessage"/>
+            <wsdl:output wsaw:Action="http://services.digikey.com/dkservices/IService/AuthenticateResponse"
+                         message="tns:IService_Authenticate_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="Notify">
+            <wsdl:input wsaw:Action="http://services.digikey.com/dkservices/IService/Notify"
+                        message="tns:IService_Notify_InputMessage"/>
+            <wsdl:output wsaw:Action="http://services.digikey.com/dkservices/IService/NotifyResponse"
+                         message="tns:IService_Notify_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="Search">
+            <wsdl:input wsaw:Action="http://services.digikey.com/dkservices/IService/Search"
+                        message="tns:IService_Search_InputMessage"/>
+            <wsdl:output wsaw:Action="http://services.digikey.com/dkservices/IService/SearchResponse"
+                         message="tns:IService_Search_OutputMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:service name="Service">
+        <wsdl:port name="soap" binding="i0:soap">
+            <soap:address location="https://servicestest.digikey.com/DkServices/Service.svc/soap"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
